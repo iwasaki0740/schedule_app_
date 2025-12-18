@@ -57,6 +57,35 @@ input {
     cursor: pointer;
     transition: background 0.3s;
 }
+/* 親要素を相対位置にする */
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+/* ボタンを右端に配置 */
+.toggle-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #1a73e8;
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.toggle-btn:hover {
+    text-decoration: underline;
+}
+
+/* ボタンがある分、入力欄の右側に余白を作る */
+#password {
+    padding-right: 50px;
+}
 
 .login-btn:hover { background-color: #1557b0; }
 
