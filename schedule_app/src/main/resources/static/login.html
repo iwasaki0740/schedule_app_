@@ -18,10 +18,14 @@
                     <input type="email" id="email" name="email" placeholder="example@mail.com" required>
                 </div>
 
-                <div class="input-group">
-                    <label for="password">パスワード</label>
+        <div class="input-group">
+            <label for="password">パスワード</label>
+                <div class="password-wrapper" style="position: relative;">
                     <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    <span id="toggle-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; font-size: 0.8rem;">表示</span>
                 </div>
+            <p id="error-message" style="color: #d93025; font-size: 0.8rem; margin-top: 5px; display: none;">メールアドレスかパスワードが正しくありません</p>
+        </div>
 
                 <button type="submit" class="login-btn">ログイン</button>
                 
