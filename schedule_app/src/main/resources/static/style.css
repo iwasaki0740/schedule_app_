@@ -14,14 +14,22 @@ body {
     background: white;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
     text-align: center;
 }
 
-h1 { color: #1a73e8; margin-bottom: 8px; }
-.subtitle { color: #5f6368; font-size: 0.9rem; margin-bottom: 30px; }
+h1 {
+    color: #1a73e8;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #5f6368;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
 
 /* 入力項目 */
 .input-group {
@@ -42,7 +50,8 @@ input {
     padding: 12px;
     border: 1px solid #dadce0;
     border-radius: 4px;
-    box-sizing: border-box; /* 枠線を含めたサイズ計算 */
+    box-sizing: border-box;
+    /* 枠線を含めたサイズ計算 */
 }
 
 /* ボタン */
@@ -57,6 +66,7 @@ input {
     cursor: pointer;
     transition: background 0.3s;
 }
+
 /* 親要素を相対位置にする */
 .password-container {
     position: relative;
@@ -87,7 +97,9 @@ input {
     padding-right: 50px;
 }
 
-.login-btn:hover { background-color: #1557b0; }
+.login-btn:hover {
+    background-color: #1557b0;
+}
 
 /* フッターリンク */
 .form-footer {
@@ -98,5 +110,87 @@ input {
     gap: 10px;
 }
 
-a { color: #1a73e8; text-decoration: none; }
-a:hover { text-decoration: underline; }
+a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* TODOリスト専用のスタイル */
+.todo-container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#logout-btn {
+    background: none;
+    border: 1px solid #dadce0;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#todo-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+}
+
+#add-btn {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* タスクアイテムのスタイル */
+#todo-list {
+    list-style: none;
+    padding: 0;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.todo-item:last-child {
+    border-bottom: none;
+}
+
+.delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
