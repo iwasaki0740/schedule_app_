@@ -1,27 +1,47 @@
-// フォーム要素を取得
-const loginForm = document.getElementById('login-form');
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('login-form');
+    const passwordInput = document.getElementById('password');
+    const togglePassword = document.getElementById('toggle-password');
+    const errorMessage = document.getElementById('error-message');
+    const submitBtn = document.querySelector('.login-btn');
 
-// フォームが送信（Submit）された時の処理
-loginForm.addEventListener('submit', function(event) {
-    // 1. ページのリロードを防ぐ（デフォルトの動作をキャンセル）
-    event.preventDefault();
+    // 1. パスワードの表示・非表示切り替え
+    togglePassword.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        togglePassword.textContent = type === 'password' ? '表示' : '非表示';
+    });
 
-    // 2. 入力された値を取得
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    // 3. 簡易的なバリデーション（空チェックはHTMLのrequiredで済んでいるので、ここでは中身を確認）
-    console.log("ログイン試行:", email);
-
-    // 【開発用ヒント】本来はここでAPI（サーバー）にデータを送ります
-    // 今回は例として、特定のアドレスで「ログイン成功」をシミュレーションします
-    if (email === "test@example.com" && password === "1234") {
-        alert("ログイン成功！TODOリストへ移動します。");
+    // 2. ログイン処理
+    loginForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
         
-        // 4. TODOリスト画面へ遷移（実際のファイル名に合わせて変更してください）
-        // window.location.href = 'todo.html'; 
-    } else {
-        // 5. エラー表示
-        alert("メールアドレスまたはパスワードが違います。\n(テスト用: test@example.com / 1234)");
-    }
+        // エラーを隠し、ボタンを無効化（連打防止）
+        errorMessage.style.display = 'none';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'ログイン中...';
+
+        const email = document.getElementById('email').value;
+        const password = passwordInput.value;
+
+        // 通信中を演出するための疑似的な待ち時間（1秒）
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        // ログイン判定（テスト用）
+        if (email === "test@example.com" && password === "1234") {
+            // 成功：ローカルストレージに名前を保存して遷移
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userName', 'テストユーザー');
+            alert("ログイン成功！");
+            // window.location.href = 'todo.html'; 
+        } else {
+            // 失敗：エラーメッセージを表示
+            errorMessage.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'ログイン';
+            
+            // 入力欄を赤くするなどの演出
+            passwordInput.style.borderColor = '#d93025';
+        }
+    });
 });
